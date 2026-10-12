@@ -1,0 +1,209 @@
+:root {
+  --bg: #2f3136;
+  --panel: #36393f;
+  --panel-light: #3a3b40;
+  --border: #55575e;
+  --text: #dcddde;
+  --text-dim: #9a9ba0;
+
+  --purple: #a970ff;
+  --purple-light: #e0c3ff;
+
+  --discord: #5865F2;
+  --discord-light: #7983f5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background-color: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-link img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: var(--panel-light);
+}
+
+.site-title {
+  font-size: 22px;
+  font-weight: bold;
+  background: linear-gradient(90deg, var(--purple), var(--purple-light), var(--purple));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  position: relative;
+  background-color: var(--panel-light);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.btn:hover { border-color: #7a7c85; }
+.btn.active { border-color: var(--purple); }
+
+/* --- Disabled (future features) --- */
+.btn-disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+/* --- CybyAPI button --- */
+.btn-cybyapi {
+  cursor: not-allowed;
+  overflow: hidden;
+  color: #ffffff;
+  text-shadow: 0 0 6px #bfe4ff, 0 0 14px #6ab8ff;
+  border-color: #7ec8ff;
+  background: linear-gradient(120deg, #0a1930, #16305c, #2f6fc9, #16305c, #0a1930);
+  background-size: 300% 300%;
+  animation: nightsky 6s ease infinite;
+}
+
+.btn-cybyapi::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 55%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 25%, #fff, transparent),
+    radial-gradient(1px 1px at 25% 65%, #fff, transparent),
+    radial-gradient(1px 1px at 60% 15%, #fff, transparent);
+  opacity: 1;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.btn-cybyapi:hover { border-color: #a8dcff; }
+
+@keyframes nightsky {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .35; }
+  50%      { opacity: 1; }
+}
+
+.btn-cybyapi .tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111214;
+  color: #fff;
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s;
+  z-index: 2;
+}
+
+.btn-cybyapi:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- Discord button --- */
+.btn-discord {
+  background-color: var(--discord);
+  border-color: var(--discord-light);
+  color: #fff;
+}
+
+.btn-discord:hover { background-color: var(--discord-light); }
+
+.badge-new {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ed4245;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 8px;
+  letter-spacing: .3px;
+}
+
+/* ---------- MAIN ---------- */
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+main h1 { font-size: 26px; margin: 0 0 16px 0; }
+
+.panel {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.muted { color: var(--text-dim); font-size: 14px; }
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+  padding: 40px 20px 60px 20px;
+}
+
+footer p { margin: 6px 0; }
+footer a { color: var(--purple-light); text-decoration: underline; }
